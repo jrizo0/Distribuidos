@@ -6,12 +6,16 @@
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.rmi.registry.LocateRegistry;
@@ -49,22 +53,23 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
 
    public ArrayList<Oferta> consultar() throws RemoteException {
        ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
-     File archivo = null;
+     File archivo = new File("ofertas");
       FileReader fr = null;
       BufferedReader br = null;
       try {
          // Apertura del fichero y creacion de BufferedReader para poder
           // hacer una lectura comoda (disponer del metodo readLine()).
-          archivo = new File ("ofertas");
-          fr = new FileReader (archivo);
-          br = new BufferedReader(fr);
           // Lectura del fichero
-          Oferta temp = new Oferta();
-          String linea;
-          while((linea=br.readLine())!=null)
-             System.out.println(linea);
+          FileInputStream fis = new FileInputStream(archivo);
+          ObjectInputStream ois;
 
-          ofertas.add(temp);
+          while (fis.available()>0){
+              ois = new ObjectInputStream(fis);
+              Oferta temp = (Oferta) ois.readObject();
+              System.out.println(temp.getCargo());
+          }
+
+          
       }
       catch(Exception e){
          e.printStackTrace();

@@ -16,8 +16,9 @@ public class RegistradorClient {
 
         try {
             System.out.println("Buscando Objeto ");
-            Registrador miregistrador = (Registrador) Naming.lookup("rmi://" + "25.79.109.185:1099" + "/" + "MiRegistrador");
+            Registrador miregistrador = (Registrador) Naming.lookup("rmi://" + "25.12.51.131:1099" + "/" + "MiRegistrador");
 
+            System.out.println("Pudo");
 
             if(args[0].equals("registrar")){
                 Oferta consulta = new Oferta();
