@@ -10,7 +10,7 @@ public class RegistradorClient {
     public static void main(String args[]) {
 
         try {
-            String serverIP = "25.12.51.131"; // or localhost if client and server on same machine.
+            String serverIP = "25.79.109.185"; // or localhost if client and server on same machine.
             int serverPort = 1099;
             Registry registry = LocateRegistry.getRegistry(serverIP, serverPort);
 
@@ -20,7 +20,7 @@ public class RegistradorClient {
 
             // System.out.println("Pudo");
 
-            if(args[0].equals("registrar")){
+            if(args[0].equals("registrar") && args.length == 4){
                 Oferta consulta = new Oferta();
                 consulta.setEmpresa(args[1]);
                 consulta.setCargo(args[2]);
