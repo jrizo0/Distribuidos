@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch RegistradorClient",
+            "request": "launch",
+            "mainClass": "RegistradorClient",
+            "projectName": "Taller RMI_4fb71450"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

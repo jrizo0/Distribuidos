@@ -19,17 +19,17 @@ public class RegistradorClient {
             Registrador miregistrador = (Registrador) Naming.lookup("rmi://" + "25.79.109.185:1099" + "/" + "MiRegistrador");
 
 
-            // if(args[0].equals("registrar")){
+            if(args[0].equals("registrar")){
                 Oferta consulta = new Oferta();
-                consulta.setEmpresa("rizo");
-                consulta.setCargo("puta");
-                consulta.setSueldo("0");
+                consulta.setEmpresa(args[1]);
+                consulta.setCargo(args[2]);
+                consulta.setSueldo(args[3]);
                 miregistrador.registrar(consulta);
                 System.out.println("Exito");
-            // }
-            // else if(args[0] == "consultar"){
-            //     miregistrador.consultar();
-            // }
+            }
+            else if(args[0] == "consultar"){
+                miregistrador.consultar();
+            }
         } catch (Exception e) {
             System.err.println(" System exception: "+ e);
         }

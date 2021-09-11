@@ -10,13 +10,13 @@ import java.io.Serializable;
  *
  * @author usuario
  */
-public class Oferta implements Serializable{
-    //atributos
+public class Oferta implements Serializable {
+    // atributos
     String empresa;
     String cargo;
     String sueldo;
 
-    //constructor
+    // constructor
     public Oferta(String empresa, String cargo, String sueldo) {
         this.empresa = empresa;
         this.cargo = cargo;
