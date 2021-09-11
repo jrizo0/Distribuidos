@@ -1,8 +1,4 @@
-import java.rmi.registry.*;
-import java.rmi.server.*;
-import java.io.Serializable;
 import java.rmi.*;
-import java.util.ArrayList;
 /**
  *
  * @author usuario
@@ -11,14 +7,11 @@ public class RegistradorClient {
 
     public static void main(String args[]) {
 
-        ArrayList ofertasConsulta = new ArrayList();
-        Oferta ofertaRegistro;
-
         try {
             System.out.println("Buscando Objeto ");
             Registrador miregistrador = (Registrador) Naming.lookup("rmi://" + "25.12.51.131:1099" + "/" + "MiRegistrador");
 
-            System.out.println("Pudo");
+            // System.out.println("Pudo");
 
             if(args[0].equals("registrar")){
                 Oferta consulta = new Oferta();
@@ -32,7 +25,11 @@ public class RegistradorClient {
                 }
             }
             else if(args[0].equals("consultar")){
-                miregistrador.consultar();
+                miregistrador.consultar().forEach(oferta -> {
+                    System.out.println("Empresa: "+oferta.getEmpresa());
+                    System.out.println("Cargo: "+oferta.getCargo());
+                    System.out.println("Sueldo: "+oferta.getSueldo());
+                });
             }
         } catch (Exception e) {
             System.err.println(" System exception: "+ e);

@@ -1,4 +1,3 @@
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface Registrador extends java.rmi.Remote {

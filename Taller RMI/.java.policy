@@ -1,3 +1,6 @@
 grant {
     permission java.security.AllPermission;
+    permission java.net.SocketPermission "25.12.51.131:1099", "connect, resolve";
+    permission java.net.SocketPermission "25.12.152.209:1099", "connect, resolve";
+    permission java.net.SocketPermission "25.83.21.137:1099", "connect, resolve";
 };
