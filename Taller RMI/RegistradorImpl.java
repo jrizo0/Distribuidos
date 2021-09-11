@@ -5,6 +5,7 @@
  */
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,7 +47,8 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
         }
     }
 
-   public void consultar() throws RemoteException {
+   public ArrayList<Oferta> consultar() throws RemoteException {
+       ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
      File archivo = null;
       FileReader fr = null;
       BufferedReader br = null;
@@ -57,12 +59,16 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
           fr = new FileReader (archivo);
           br = new BufferedReader(fr);
           // Lectura del fichero
+          Oferta temp = new Oferta();
           String linea;
           while((linea=br.readLine())!=null)
              System.out.println(linea);
+
+          ofertas.add(temp);
       }
       catch(Exception e){
          e.printStackTrace();
+         return null;
       }finally{
           // En el finally cerramos el fichero, para asegurarnos
           // que se cierra tanto si todo va bien como si salta 
@@ -73,8 +79,10 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
              }                  
           }catch (Exception e2){ 
              e2.printStackTrace();
+             return null; 
           }
       }
+      return ofertas;
    }
 
    public boolean registrar(Oferta oferta){
