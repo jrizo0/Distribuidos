@@ -24,10 +24,13 @@ public class RegistradorClient {
                 consulta.setEmpresa(args[1]);
                 consulta.setCargo(args[2]);
                 consulta.setSueldo(args[3]);
-                miregistrador.registrar(consulta);
-                System.out.println("Exito");
+                if(miregistrador.registrar(consulta))
+                    System.out.println("Satisfactoria");
+                else{
+                    System.out.println("No satisfactoria");
+                }
             }
-            else if(args[0] == "consultar"){
+            else if(args[0].equals("consultar")){
                 miregistrador.consultar();
             }
         } catch (Exception e) {

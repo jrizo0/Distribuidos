@@ -53,7 +53,7 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
       try {
          // Apertura del fichero y creacion de BufferedReader para poder
           // hacer una lectura comoda (disponer del metodo readLine()).
-          archivo = new File ("C:\\archivo.txt");
+          archivo = new File ("ofertas");
           fr = new FileReader (archivo);
           br = new BufferedReader(fr);
           // Lectura del fichero
@@ -77,7 +77,7 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
       }
    }
 
-   public void registrar(Oferta oferta){
+   public boolean registrar(Oferta oferta){
      FileOutputStream fos = null;
         ObjectOutputStream salida = null;
         try {
@@ -87,9 +87,11 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
             //Se escribe el objeto en el fichero
             salida.writeObject(oferta);
         } catch (FileNotFoundException e) {
-                 System.out.println("1: "+e.getMessage());                                                          
+                 System.out.println("1: "+e.getMessage());
+                 return false;                                                          
         } catch (IOException e) {
                  System.out.println("2: "+e.getMessage());
+                 return false;  
         } finally {
             try {
                 if(fos!=null){
@@ -98,9 +100,12 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
                 if(salida!=null){
                    salida.close();
                 }
+                
             } catch (IOException e) {
                      System.out.println("3: "+e.getMessage());
+                     return false;  
             }
         }
+        return true;
    }
 }
