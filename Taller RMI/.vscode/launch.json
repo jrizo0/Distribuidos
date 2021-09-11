@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch RegistradorClient",
+            "request": "launch",
+            "mainClass": "RegistradorClient",
+            "projectName": "Taller RMI_97057bf6"
+        },
+        {
+            "type": "java",
+            "name": "Launch RegistradorServer",
+            "request": "launch",
+            "mainClass": "RegistradorServer",
+            "projectName": "Taller RMI_97057bf6"
+        }
+    ]
+}
