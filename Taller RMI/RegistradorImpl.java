@@ -33,17 +33,6 @@ public class RegistradorImpl extends UnicastRemoteObject implements Registrador 
         }
     }
 
-    @Override
-    public String prueba() throws RemoteException {
-        try {
-            return ("holiaaaaaa");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return("error");
-        }
-    }
-
    public ArrayList<Oferta> consultar() throws RemoteException {
        ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
      File archivo = new File("ofertas");
